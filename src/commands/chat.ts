@@ -14,6 +14,7 @@ import { syncCommand } from "./sync.js";
 import { loginCommand } from "./login.js";
 import { whoamiCommand } from "./whoami.js";
 import { doctorCommand } from "./doctor.js";
+import { unlinkCommand } from "./unlink.js";
 
 export async function chatCommand(initialPrompt?: string) {
   const cwd = process.cwd();
@@ -94,8 +95,15 @@ export async function chatCommand(initialPrompt?: string) {
       console.log(`  ${chalk.cyan("/login")}   - Masuk dengan akun Google / KODA Web`);
       console.log(`  ${chalk.cyan("/whoami")}  - Tampilkan profil pengguna yang aktif`);
       console.log(`  ${chalk.cyan("/doctor")}  - Periksa status sistem, git, dan AI model`);
+      console.log(`  ${chalk.cyan("/unlink")}  - Putuskan hubungan direktori ini dari PRD aktif`);
       console.log(`  ${chalk.cyan("/clear")}   - Bersihkan riwayat chat saat ini`);
       console.log(`  ${chalk.cyan("/exit")}    - Keluar dari CLI\n`);
+      continue;
+    }
+
+    if (trimmed === "/unlink") {
+      await unlinkCommand();
+      context.projectConfig = null;
       continue;
     }
 

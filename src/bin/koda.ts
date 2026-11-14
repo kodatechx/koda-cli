@@ -12,6 +12,7 @@ import { loginCommand } from "../commands/login.js";
 import { logoutCommand } from "../commands/logout.js";
 import { whoamiCommand } from "../commands/whoami.js";
 import { doctorCommand } from "../commands/doctor.js";
+import { unlinkCommand } from "../commands/unlink.js";
 
 // Load environment variables (.env, .env.local, ../app/.env.local)
 loadEnvironment(process.cwd());
@@ -57,6 +58,13 @@ program
   .description("Hubungkan direktori kerja ini dengan dokumen PRD di KODA Web / Supabase")
   .action(async (prdIdOrUrl?: string) => {
     await linkCommand(prdIdOrUrl);
+  });
+
+program
+  .command("unlink")
+  .description("Putuskan hubungan direktori ini dari dokumen PRD KODA yang aktif")
+  .action(async () => {
+    await unlinkCommand();
   });
 
 program
