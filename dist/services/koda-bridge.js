@@ -15,7 +15,7 @@ export async function fetchPrdDocument(idOrUrl) {
     const supabase = getSupabaseClient();
     if (!supabase)
         return null;
-    // Extract ID if URL is passed (e.g. http://localhost:3000/tools/prd-editor/doc-xxx)
+    // Extract ID if URL is passed (e.g. https://kodaaistudio.vercel.app/tools/prd-editor/doc-xxx)
     let docId = idOrUrl.trim();
     const match = docId.match(/\/prd-editor\/([a-zA-Z0-9_-]+)/);
     if (match) {

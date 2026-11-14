@@ -24,7 +24,7 @@ export async function loginCommand() {
     }
     const port = 54321;
     const state = Math.random().toString(36).substring(2, 15);
-    const webBaseUrl = process.env.KODA_WEB_URL || "http://localhost:3000";
+    const webBaseUrl = process.env.KODA_WEB_URL || "https://kodaaistudio.vercel.app";
     const loginUrl = `${webBaseUrl}/auth/cli?port=${port}&state=${state}`;
     printAuthScreen(loginUrl);
     openBrowser(loginUrl);
